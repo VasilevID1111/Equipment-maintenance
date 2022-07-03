@@ -222,7 +222,7 @@ namespace Equipment_maintenance
             UserChoice UserChoice = new UserChoice("Введите id оборудования");
             UserChoice.ShowDialog();
             DataTable dt;
-            string select = "select idОборудования, ТипРаботы, Причина, Описание from reports_works as R where idОборудования and О.idОборудования = '" + UserChoiceClass.Value + "'";
+            string select = "select idОборудования, ТипРаботы, Причина, Описание from reports_works as R where idОборудования = '" + UserChoiceClass.Value + "'";
             dt = SelectDB(select);
             dataGridView1.DataSource = null; //reset
             dataGridView1.DataSource = dt;
@@ -260,6 +260,42 @@ namespace Equipment_maintenance
         {
             Form8 form8 = new Form8();
             form8.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 0)
+            {
+                string idОборудования = dataGridView1[0, dataGridView1.SelectedRows[0].Index].Value.ToString();
+
+                DataTable dt;
+                string select = "select * from equipment_movements where idОборудования = '" + idОборудования + "'";
+                dt = SelectDB(select);
+                dataGridView1.DataSource = null; //reset
+                dataGridView1.DataSource = dt;
+            } else
+            {
+                MessageBox.Show("Выделите интересующую строку!");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 0)
+            {
+                string idАдреса = dataGridView1[5, dataGridView1.SelectedRows[0].Index].Value.ToString();
+                string idОборудования = dataGridView1[0, dataGridView1.SelectedRows[0].Index].Value.ToString();
+
+                DataTable dt;
+                string select = "select O.idОборудования, O.Наименование, O.МатОтвЛицо, Ad.Отдел, Ad.Корпус, Ad.Этаж, Ad.Комната, Ad.Стол from equipment as O inner join equipment_addresses as Ad on Ad.idАдреса = O.idАдреса and O.idОборудования ='"+ idОборудования + "' where O.idАдреса = '" + idАдреса + "'";
+                dt = SelectDB(select);
+                dataGridView1.DataSource = null; //reset
+                dataGridView1.DataSource = dt;
+            }
+            else
+            {
+                MessageBox.Show("Выделите интересующую строку!");
+            }
         }
     }
 }
