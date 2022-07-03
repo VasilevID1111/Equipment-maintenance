@@ -170,12 +170,11 @@ namespace Equipment_maintenance
         {
             if(textBox1.Text != "" && textBox2.Text != "")
             {
-                string conn_param = "Server=localhost;Port=5432;User Id=" + textBox1.Text.ToLower() + ";Password=" + textBox2.Text.ToLower() + ";Database=Equipment_maintenance;"; //строка подключения к БД
-                if(TestConnection(conn_param) == true)
+                Connection.Nickname = textBox1.Text.ToLower();
+                Connection.Password = textBox2.Text.ToLower();
+                if(TestConnection(Connection.ConnParam()) == true)
                 {
                     Form1 form1 = new Form1();
-                    Form1.Nickname = textBox1.Text.ToLower(); //передаем в главную форму nickname
-                    Form1.Password = textBox2.Text.ToLower(); //передаем в главную форму пароль
                     form1.Show();
                     this.Hide();
                     textBox1.Text = "";

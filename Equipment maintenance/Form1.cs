@@ -8,8 +8,7 @@ namespace Equipment_maintenance
 
     public partial class Form1 : Form
     {
-        public static string Nickname { get; set; }
-        public static string Password { get; set; }
+
 
         public Form1()
         {
@@ -29,23 +28,23 @@ namespace Equipment_maintenance
             служебнаяЗапискаToolStripMenuItem.Enabled = false;
             актВыводаToolStripMenuItem.Enabled = false;
             актСписанияToolStripMenuItem.Enabled = false; //делаем недоступным создние документов
-            string conn_param = "Server=localhost;Port=5432;User Id="+ Nickname +";Password="+Password+";Database=Equipment_maintenance;"; //строка подключения к БД
+            
             //string conn_param = "Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"; //строка подключения к БД
-            if(Nickname == "purchasing") //и даем "права" на создание документов
+            if (Connection.Nickname == "purchasing") //и даем "права" на создание документов
             {
                 актВводаToolStripMenuItem.Enabled = true;
             }
-            else if(Nickname == "repair")
+            else if(Connection.Nickname == "repair")
             {
                 актПриемапередачиToolStripMenuItem.Enabled = true;
                 служебнаяЗапискаToolStripMenuItem.Enabled = true;
             }
-            else if (Nickname == "decommissing")
+            else if (Connection.Nickname == "decommissing")
             {
                 актВыводаToolStripMenuItem.Enabled = true;
                 актСписанияToolStripMenuItem.Enabled = true;
             }
-            NpgsqlConnection conn = new NpgsqlConnection(conn_param);
+            NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam());
             conn.Open(); //Открываем соединение
             try
             {
@@ -126,9 +125,9 @@ namespace Equipment_maintenance
 
         private DataTable SelectDB(string select)
         {
-            string conn_param = "Server=localhost;Port=5432;User Id=" + Nickname + ";Password=" + Password + ";Database=Equipment_maintenance;"; //строка подключения к БД
+            
 
-            NpgsqlConnection conn = new NpgsqlConnection(conn_param);
+            NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam());
             conn.Open(); //Открываем соединение
             try
             {
