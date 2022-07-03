@@ -6,7 +6,7 @@ using Npgsql;
 
 namespace Equipment_maintenance
 {
-    public partial class Form6 : Form //акт приема передачи
+    public partial class Form6 : Form //акт технической экспертизы (вывода)
     {
         private Label label1;
         private Label label2;
@@ -27,7 +27,7 @@ namespace Equipment_maintenance
         public Form6()
         {
             InitializeComponent();
-            
+            conn.Open(); //Открываем соединение
             //textBox3.Text = DateTime.Now.ToString();
             textBox1.Text = idDoc();
             
@@ -190,42 +190,9 @@ namespace Equipment_maintenance
 
             try
             {
-                conn.Open(); //Открываем соединение
-                NpgsqlCommand com = new NpgsqlCommand($"insert into handover_acts values ({act[0]}, '{act[1]}', '{DateTime.Now.ToString()}', '{act[2]}', '{act[3]}', '{act[4]}', '{act[5]}', {act[6]})", conn); //insert-им акт передачи
-                com.ExecuteNonQueryAsync(); //выполняем запрос
+                NpgsqlCommand com = new NpgsqlCommand($"insert into decommissioning_acts values ('{act[1]}', '{act[4]}', '{act[2]}', '{act[3]}', '{act[0]}', '{DateTime.Now.ToString()}')", conn); //insert-им акт передачи
+                com.ExecuteNonQuery(); //выполняем запрос
 
-                //проверка на idАдреса 
-                NpgsqlCommand com3 = new NpgsqlCommand($"select * from equipment_addresses ORDER BY idАдреса DESC LIMIT 1", conn); //insert-им адрес резерва
-                DataTable dt = new DataTable();
-                dt.Load(com3.ExecuteReader()); //загружаем в dt вывод запроса
-                int numberID = Int32.Parse(dt.Rows[0].ItemArray[0].ToString());
-                if(numberID == Int32.Parse(act[6]))
-                {
-                    numberID = 0; //ничего не делаем
-                }
-                else //добавляем новую запись
-                {
-                    NpgsqlCommand com1 = new NpgsqlCommand($"insert into equipment_addresses values ({act[6]}, '{act[7]}', {act[8]}, {act[9]}, {act[10]}, '{act[11]}')", conn); //insert-им новый адрес
-                    com1.ExecuteNonQueryAsync(); //выполняем запрос
-                }
-
-                string idDvig = "";
-                NpgsqlCommand com2 = new NpgsqlCommand($"SELECT idДвижения FROM equipment_movements ORDER BY idДвижения DESC LIMIT 1", conn); //выбор нового id для движения
-                DataTable dt2 = new DataTable();
-                dt.Load(com2.ExecuteReader()); //загружаем в dt вывод запроса
-                if (dt.Rows.Count == 0) //если строк нет, создаем первый айди
-                    idDvig = "1";
-                else
-                    idDvig = dt2.Rows[0].ItemArray[0].ToString();
-                idDvig = (Int32.Parse(idDvig) + 1).ToString();
-                NpgsqlCommand com4 = new NpgsqlCommand($"insert into equipment_movements values ({idDvig}, '{act[2]}', '{act[3]}', '{act[6]}', 'Акт приема-передачи', {act[0]}, '{DateTime.Now.ToString()}')", conn); //insert-им движение
-                com4.ExecuteNonQueryAsync(); //выполняем запрос
-
-                //и update оборудования
-                NpgsqlCommand com5 = new NpgsqlCommand($"update equipment set idАдреса = {act[6]}, Статус = 1 where idОборудования = '{act[2]}'", conn); //insert-им движение
-                com5.ExecuteNonQueryAsync(); //выполняем запрос
-
-                conn.Close(); //Закрываем соединение
                 MessageBox.Show("Успешно!");
             }
             catch (Exception ex)
@@ -236,7 +203,7 @@ namespace Equipment_maintenance
         }
         private string idDoc() //берем id для нового документа (прибавляем 1 к старому)
         {
-            conn.Open(); //Открываем соединение
+
             string idDoc = "";
 
             NpgsqlCommand com = new NpgsqlCommand($"SELECT NULLIF(idДокумента, '')::int FROM handover_acts ORDER BY NULLIF(idДокумента, '')::int DESC LIMIT 1", conn); 
@@ -246,7 +213,6 @@ namespace Equipment_maintenance
                 idDoc = "101";
             else
                 idDoc = (Int32.Parse(dt.Rows[0].ItemArray[0].ToString()) + 1).ToString();
-            conn.Close();
             return idDoc;
         }
         private void Form2_Load(object sender, System.EventArgs e)

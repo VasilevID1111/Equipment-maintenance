@@ -23,6 +23,10 @@ namespace Equipment_maintenance
         private TextBox textBox5;
         private Label label8;
         public List<string> act = new List<string>();
+        private TextBox textBox7;
+        private Label label4;
+        private TextBox textBox8;
+        private Label label5;
         public NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam_Admin());
         //public NpgsqlConnection conn = new NpgsqlConnection("Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"); //на сервере
         //public string conn_param = "Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"; //строка подключения к БД
@@ -32,7 +36,7 @@ namespace Equipment_maintenance
             conn.Open();
             //textBox3.Text = DateTime.Now.ToString();
             textBox1.Text = idDoc();
-            
+            textBox7.Text = idComp();
         }
 
         private void InitializeComponent()
@@ -51,6 +55,10 @@ namespace Equipment_maintenance
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -152,7 +160,7 @@ namespace Equipment_maintenance
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(254, 236);
+            this.button1.Location = new System.Drawing.Point(254, 295);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 19;
@@ -169,9 +177,45 @@ namespace Equipment_maintenance
             this.label8.TabIndex = 7;
             this.label8.Text = "Основание";
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(147, 227);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(167, 23);
+            this.textBox7.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 230);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 15);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "idКомпановки";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(147, 257);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(167, 23);
+            this.textBox8.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(5, 260);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 15);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Доп. оборудование";
+            // 
             // Form4
             // 
-            this.ClientSize = new System.Drawing.Size(341, 269);
+            this.ClientSize = new System.Drawing.Size(341, 324);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
@@ -196,15 +240,19 @@ namespace Equipment_maintenance
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            TextBox[] tbs = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6 };
+            TextBox[] tbs = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
             if (button1.Text == "Далее")
             {
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 8; i++)
                     act.Add(tbs[i].Text); //забираем ответы из формы
 
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 8; i++)
                     tbs[i].Text = "";
-                
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                label4.Visible = false;
+                label5.Visible = false;
+
                 button1.Text = "Создать";
                 addressBD();
             }
@@ -225,40 +273,26 @@ namespace Equipment_maintenance
 
             try
             {
-                
-                NpgsqlCommand com = new NpgsqlCommand($"insert into handover_acts values ({act[0]}, '{act[1]}', '{DateTime.Now.ToString()}', '{act[2]}', '{act[3]}', '{act[4]}', '{act[5]}', {act[6]})", conn); //insert-им акт передачи
-                com.ExecuteNonQueryAsync(); //выполняем запрос
-
                 //проверка на idАдреса 
-                NpgsqlCommand com3 = new NpgsqlCommand($"select * from equipment_addresses ORDER BY idАдреса DESC LIMIT 1", conn); //insert-им адрес резерва
+                NpgsqlCommand com3 = new NpgsqlCommand($"select * from equipment_addresses where idАдреса <> 999 ORDER BY idАдреса DESC LIMIT 1", conn); //insert-им адрес резерва
                 DataTable dt = new DataTable();
                 dt.Load(com3.ExecuteReader()); //загружаем в dt вывод запроса
                 int numberID = Int32.Parse(dt.Rows[0].ItemArray[0].ToString());
-                if(numberID == Int32.Parse(act[6]))
+                if (numberID >= Int32.Parse(act[8]))
                 {
                     numberID = 0; //ничего не делаем
                 }
                 else //добавляем новую запись
                 {
-                    NpgsqlCommand com1 = new NpgsqlCommand($"insert into equipment_addresses values ({act[6]}, '{act[7]}', {act[8]}, {act[9]}, {act[10]}, '{act[11]}')", conn); //insert-им новый адрес
-                    com1.ExecuteNonQueryAsync(); //выполняем запрос
+                    NpgsqlCommand com1 = new NpgsqlCommand($"insert into equipment_addresses values ({act[8]}, '{act[9]}', {act[10]}, {act[11]}, {act[12]}, '{act[13]}')", conn); //insert-им новый адрес
+                    com1.ExecuteNonQuery(); //выполняем запрос
                 }
 
-                string idDvig = "";
-                NpgsqlCommand com2 = new NpgsqlCommand($"SELECT idДвижения FROM equipment_movements ORDER BY idДвижения DESC LIMIT 1", conn); //выбор нового id для движения
-                DataTable dt2 = new DataTable();
-                dt.Load(com2.ExecuteReader()); //загружаем в dt вывод запроса
-                if (dt.Rows.Count == 0) //если строк нет, создаем первый айди
-                    idDvig = "1";
-                else
-                    idDvig = dt2.Rows[0].ItemArray[0].ToString();
-                idDvig = (Int32.Parse(idDvig) + 1).ToString();
-                NpgsqlCommand com4 = new NpgsqlCommand($"insert into equipment_movements values ({idDvig}, '{act[2]}', '{act[3]}', '{act[6]}', 'Акт приема-передачи', {act[0]}, '{DateTime.Now.ToString()}')", conn); //insert-им движение
-                com4.ExecuteNonQueryAsync(); //выполняем запрос
 
-                //и update оборудования
-                NpgsqlCommand com5 = new NpgsqlCommand($"update equipment set idАдреса = {act[6]}, Статус = 1 where idОборудования = '{act[2]}'", conn); //insert-им движение
-                com5.ExecuteNonQueryAsync(); //выполняем запрос
+                NpgsqlCommand com = new NpgsqlCommand($"insert into handover_acts values ('{act[1]}', '{act[2]}', '{act[3]}', '{act[4]}', '{act[5]}', {act[8]}, {act[6]}, '{act[0]}', '{DateTime.Now.ToString()}', '{act[7]}')", conn); //insert-им акт передачи
+                com.ExecuteNonQuery(); //выполняем запрос
+
+                
 
                 MessageBox.Show("Успешно!");
             }
@@ -270,7 +304,7 @@ namespace Equipment_maintenance
         }
         private string idDoc() //берем id для нового документа (прибавляем 1 к старому)
         {
-            conn.Open(); //Открываем соединение
+            
             string idDoc = "";
 
             NpgsqlCommand com = new NpgsqlCommand($"SELECT NULLIF(idДокумента, '')::int FROM handover_acts ORDER BY NULLIF(idДокумента, '')::int DESC LIMIT 1", conn); 
@@ -280,8 +314,23 @@ namespace Equipment_maintenance
                 idDoc = "101";
             else
                 idDoc = (Int32.Parse(dt.Rows[0].ItemArray[0].ToString()) + 1).ToString();
-            conn.Close();
+  
             return idDoc;
+        }
+        private string idComp() //берем id для нового документа (прибавляем 1 к старому)
+        {
+
+            string idComp = "";
+
+            NpgsqlCommand com = new NpgsqlCommand($"SELECT NULLIF(idКомпановки, '')::int FROM equipment where idКомпановки <> '' ORDER BY NULLIF(idКомпановки, '')::int DESC LIMIT 1", conn);
+            DataTable dt = new DataTable();
+            dt.Load(com.ExecuteReader()); //загружаем в dt вывод запроса
+            if (dt.Rows.Count == 0) //если строк нет, создаем первый айди
+                idComp = "101";
+            else
+                idComp = (Int32.Parse(dt.Rows[0].ItemArray[0].ToString()) + 1).ToString();
+
+            return idComp;
         }
         private void addressBD()
         {
@@ -289,7 +338,7 @@ namespace Equipment_maintenance
             {
                 //TextBox[] tbs = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7 };
                 Label[] lbls = { label2, label3, label6, label7, label8, label9 };
-                NpgsqlCommand com = new NpgsqlCommand($"select * from equipment_addresses ORDER BY idАдреса DESC LIMIT 1", conn); //insert-им адрес резерва
+                NpgsqlCommand com = new NpgsqlCommand($"select * from equipment_addresses where idАдреса <> 999 ORDER BY idАдреса DESC LIMIT 1", conn); //insert-им адрес резерва
                 DataTable dt = new DataTable();
                 dt.Load(com.ExecuteReader()); //загружаем в dt вывод запроса
                 for (int i = 0; i < 6; i++)

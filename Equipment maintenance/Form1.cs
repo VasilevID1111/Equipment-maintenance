@@ -28,27 +28,30 @@ namespace Equipment_maintenance
         
         private void LoadBD() 
         {
-            актВводаToolStripMenuItem.Enabled = false;
-            актПриемапередачиToolStripMenuItem.Enabled = false;
-            служебнаяЗапискаToolStripMenuItem.Enabled = false;
-            актВыводаToolStripMenuItem.Enabled = false;
-            актСписанияToolStripMenuItem.Enabled = false; //делаем недоступным создние документов
-            отчетОРаботеToolStripMenuItem.Enabled = false;
+            актВводавэксплуатацию.Enabled = false;
+            //актВводаToolStripMenuItem.Enabled = false;
+            актПриемапередачи.Enabled = false;
+            //актПриемапередачиToolStripMenuItem.Enabled = false;
+            служебнаяЗаписка.Enabled = false;
+            //служебнаяЗапискаToolStripMenuItem.Enabled = false;
+            актВывода.Enabled = false;
+            актСписания.Enabled = false; //делаем недоступным создние документов
+            отчетОРаботе.Enabled = false;
             //string conn_param = "Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"; //строка подключения к БД
             if (Connection.Nickname == "purchasing") //и даем "права" на создание документов
             {
-                актВводаToolStripMenuItem.Enabled = true;
+                актВводавэксплуатацию.Enabled = true;
             }
             else if(Connection.Nickname == "repair")
             {
-                актПриемапередачиToolStripMenuItem.Enabled = true;
-                служебнаяЗапискаToolStripMenuItem.Enabled = true;
-                отчетОРаботеToolStripMenuItem.Enabled = true;
+                актПриемапередачи.Enabled = true;
+                служебнаяЗаписка.Enabled = true;
+                отчетОРаботе.Enabled = true;
             }
             else if (Connection.Nickname == "decommissing")
             {
-                актВыводаToolStripMenuItem.Enabled = true;
-                актСписанияToolStripMenuItem.Enabled = true;
+                актВывода.Enabled = true;
+                актСписания.Enabled = true;
             }
             NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam());
             conn.Open(); //Открываем соединение
@@ -81,10 +84,8 @@ namespace Equipment_maintenance
                     }
                 }
 
-
                 dataGridView1.DataSource = null; //reset
                 dataGridView1.DataSource = dt;
-                
                 
             }
             catch(Exception ex)
@@ -147,7 +148,7 @@ namespace Equipment_maintenance
             Form2 form2 = new Form2();
             form2.ShowDialog();
         }
-
+        
         private void актПриемапередачиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //this.Enabled = false;
@@ -218,7 +219,47 @@ namespace Equipment_maintenance
 
         private void работыПоОборудованиюToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            UserChoice UserChoice = new UserChoice("Введите наименование оборудования");
+            UserChoice.ShowDialog();
+            DataTable dt;
+            string select = "select С.ТипРаботы, С.Описание from service_memos as С inner join equipment_movements as Д on С.idДокумента = Д.idДокумента and Д.ТипДокумента = 'Записка' inner join equipment as О on О.idОборудования = Д.idОборудования and О.Наименование = '" + UserChoiceClass.Value + "'";
+            dt = SelectDB(select);
+            dataGridView1.DataSource = null; //reset
+            dataGridView1.DataSource = dt;
+        }
+        private void toolStripMenuItem2_Click(object sender, EventArgs e) //ввод в эксп
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+        }
+        private void toolStripMenuItem3_Click(object sender, EventArgs e) //приема передачи
+        {
+            Form4 form4 = new Form4();
+            form4.ShowDialog();
+        }
+
+        private void актСписания_Click(object sender, EventArgs e) 
+        {
+            Form7 form7 = new Form7();
+            form7.ShowDialog();
+        }
+    
+        private void служебнаяЗаписка_Click(object sender, EventArgs e)
+        {
+            Form5 form5 = new Form5();
+            form5.ShowDialog();
+        }
+
+        private void актВывода_Click(object sender, EventArgs e)
+        {
+            Form6 form6 = new Form6();
+            form6.ShowDialog();
+        }
+
+        private void отчетОРаботе_Click(object sender, EventArgs e)
+        {
+            Form8 form8 = new Form8();
+            form8.ShowDialog();
         }
     }
 }

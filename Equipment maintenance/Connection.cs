@@ -14,7 +14,7 @@ namespace Equipment_maintenance
 
         private static string Server = "localhost";
         private static string Port = "5432";
-        private static string DB = "Equipment_maintenance2";
+        private static string DB = "Equipment_maintenance";
 
         //private static string Server = "localhost";
         //private static string Port = "5432";

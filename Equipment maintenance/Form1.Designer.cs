@@ -38,12 +38,12 @@ namespace Equipment_maintenance
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.актВводавэксплуатацию = new System.Windows.Forms.ToolStripMenuItem();
+            this.актПриемапередачи = new System.Windows.Forms.ToolStripMenuItem();
+            this.служебнаяЗаписка = new System.Windows.Forms.ToolStripMenuItem();
+            this.актВывода = new System.Windows.Forms.ToolStripMenuItem();
+            this.актСписания = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетОРаботе = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.актВводаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.актПриемапередачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +95,7 @@ namespace Equipment_maintenance
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(342, 21);
+            this.button2.Location = new System.Drawing.Point(342, 19);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 23);
             this.button2.TabIndex = 2;
@@ -148,7 +148,7 @@ namespace Equipment_maintenance
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.создатьДокументToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(496, 20);
+            this.menuStrip1.Location = new System.Drawing.Point(496, 19);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(127, 24);
             this.menuStrip1.TabIndex = 7;
@@ -158,51 +158,57 @@ namespace Equipment_maintenance
             // 
             this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7});
+            this.актВводавэксплуатацию,
+            this.актПриемапередачи,
+            this.служебнаяЗаписка,
+            this.актВывода,
+            this.актСписания,
+            this.отчетОРаботе});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(117, 20);
             this.toolStripMenuItem1.Text = "Создать документ";
             // 
-            // toolStripMenuItem2
+            // актВводавэксплуатацию
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(233, 22);
-            this.toolStripMenuItem2.Text = "Акт ввода в эксплуатацию";
+            this.актВводавэксплуатацию.Name = "актВводавэксплуатацию";
+            this.актВводавэксплуатацию.Size = new System.Drawing.Size(233, 22);
+            this.актВводавэксплуатацию.Text = "Акт ввода в эксплуатацию";
+            this.актВводавэксплуатацию.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
-            // toolStripMenuItem3
+            // актПриемапередачи
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(233, 22);
-            this.toolStripMenuItem3.Text = "Акт приема-передачи";
+            this.актПриемапередачи.Name = "актПриемапередачи";
+            this.актПриемапередачи.Size = new System.Drawing.Size(233, 22);
+            this.актПриемапередачи.Text = "Акт приема-передачи";
+            this.актПриемапередачи.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
-            // toolStripMenuItem4
+            // служебнаяЗаписка
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(233, 22);
-            this.toolStripMenuItem4.Text = "Служебная записка";
+            this.служебнаяЗаписка.Name = "служебнаяЗаписка";
+            this.служебнаяЗаписка.Size = new System.Drawing.Size(233, 22);
+            this.служебнаяЗаписка.Text = "Служебная записка";
+            this.служебнаяЗаписка.Click += new System.EventHandler(this.служебнаяЗаписка_Click);
             // 
-            // toolStripMenuItem5
+            // актВывода
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(233, 22);
-            this.toolStripMenuItem5.Text = "Акт технической экспертизы";
+            this.актВывода.Name = "актВывода";
+            this.актВывода.Size = new System.Drawing.Size(233, 22);
+            this.актВывода.Text = "Акт технической экспертизы";
+            this.актВывода.Click += new System.EventHandler(this.актВывода_Click);
             // 
-            // toolStripMenuItem6
+            // актСписания
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(233, 22);
-            this.toolStripMenuItem6.Text = "Акт списания";
+            this.актСписания.Name = "актСписания";
+            this.актСписания.Size = new System.Drawing.Size(233, 22);
+            this.актСписания.Text = "Акт списания";
+            this.актСписания.Click += new System.EventHandler(this.актСписания_Click);
             // 
-            // toolStripMenuItem7
+            // отчетОРаботе
             // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(233, 22);
-            this.toolStripMenuItem7.Text = "Отчет о работе";
+            this.отчетОРаботе.Name = "отчетОРаботе";
+            this.отчетОРаботе.Size = new System.Drawing.Size(233, 22);
+            this.отчетОРаботе.Text = "Отчет о работе";
+            this.отчетОРаботе.Click += new System.EventHandler(this.отчетОРаботе_Click);
             // 
             // создатьДокументToolStripMenuItem
             // 
@@ -301,18 +307,20 @@ namespace Equipment_maintenance
             // 
             // menuStrip2
             // 
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.запросыToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(661, 21);
+            this.menuStrip2.Location = new System.Drawing.Point(661, 19);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(188, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(68, 24);
             this.menuStrip2.TabIndex = 11;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // запросыToolStripMenuItem
             // 
             this.запросыToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.запросыToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.запросыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оборудованиеВОтделеToolStripMenuItem,
             this.историяПользователяToolStripMenuItem,
@@ -410,12 +418,12 @@ namespace Equipment_maintenance
         private System.Windows.Forms.ToolStripMenuItem актСписанияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетОРаботеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem актВводавэксплуатацию;
+        private System.Windows.Forms.ToolStripMenuItem актПриемапередачи;
+        private System.Windows.Forms.ToolStripMenuItem служебнаяЗаписка;
+        private System.Windows.Forms.ToolStripMenuItem актВывода;
+        private System.Windows.Forms.ToolStripMenuItem актСписания;
+        private System.Windows.Forms.ToolStripMenuItem отчетОРаботе;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem запросыToolStripMenuItem;
