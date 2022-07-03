@@ -28,8 +28,7 @@ namespace Equipment_maintenance
         private Label label8;
         private Button button2;
         public List<string> act = new List<string>();
-        //public string conn_param = ; //строка подключения к БД
-        public NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=*SCUOihj2;Database=Equipment_maintenance;");
+        public NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam_Admin());
         //public NpgsqlConnection conn = new NpgsqlConnection("Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"); //на сервере
         //public string conn_param = "Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"; //строка подключения к БД
         public Form2()
