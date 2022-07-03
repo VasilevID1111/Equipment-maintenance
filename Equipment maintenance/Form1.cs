@@ -147,16 +147,16 @@ namespace Equipment_maintenance
         }
         private void актВводавэксплуатациюToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
+            //this.Enabled = false;
             Form2 form2 = new Form2();
-            form2.Show();
+            form2.ShowDialog();
         }
 
         private void актПриемапередачиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
+            //this.Enabled = false;
             Form4 form4 = new Form4();
-            form4.Show();
+            form4.ShowDialog();
         }
 
         private void служебнаяЗапискаToolStripMenuItem_Click(object sender, EventArgs e)
