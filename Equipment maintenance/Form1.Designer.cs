@@ -31,33 +31,44 @@ namespace Equipment_maintenance
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.EquipmentDepartmentButton = new System.Windows.Forms.ToolStripButton();
-            this.HistoryEquipmentUserButton = new System.Windows.Forms.ToolStripButton();
-            this.DateOperationButton = new System.Windows.Forms.ToolStripButton();
-            this.WorksOnEquipmentButton = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.актВводаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.актПриемапередачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.служебнаяЗапискаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.актВыводаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.актСписанияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетОРаботеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.запросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оборудованиеВОтделеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.историяПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.датаВведенияВЭксплуатациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.работыПоОборудованиюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -66,67 +77,16 @@ namespace Equipment_maintenance
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 66);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(970, 433);
+            this.dataGridView1.Size = new System.Drawing.Size(970, 449);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EquipmentDepartmentButton,
-            this.HistoryEquipmentUserButton,
-            this.DateOperationButton,
-            this.WorksOnEquipmentButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(970, 25);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // EquipmentDepartmentButton
-            // 
-            this.EquipmentDepartmentButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.EquipmentDepartmentButton.Image = ((System.Drawing.Image)(resources.GetObject("EquipmentDepartmentButton.Image")));
-            this.EquipmentDepartmentButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EquipmentDepartmentButton.Name = "EquipmentDepartmentButton";
-            this.EquipmentDepartmentButton.Size = new System.Drawing.Size(141, 22);
-            this.EquipmentDepartmentButton.Text = "Оборудование в отделе";
-            this.EquipmentDepartmentButton.ToolTipText = " ";
-            this.EquipmentDepartmentButton.Click += new System.EventHandler(this.EquipmentDepartmentButton_Click);
-            // 
-            // HistoryEquipmentUserButton
-            // 
-            this.HistoryEquipmentUserButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.HistoryEquipmentUserButton.Image = ((System.Drawing.Image)(resources.GetObject("HistoryEquipmentUserButton.Image")));
-            this.HistoryEquipmentUserButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.HistoryEquipmentUserButton.Name = "HistoryEquipmentUserButton";
-            this.HistoryEquipmentUserButton.Size = new System.Drawing.Size(136, 22);
-            this.HistoryEquipmentUserButton.Text = "История пользователя";
-            // 
-            // DateOperationButton
-            // 
-            this.DateOperationButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.DateOperationButton.Image = ((System.Drawing.Image)(resources.GetObject("DateOperationButton.Image")));
-            this.DateOperationButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DateOperationButton.Name = "DateOperationButton";
-            this.DateOperationButton.Size = new System.Drawing.Size(180, 22);
-            this.DateOperationButton.Text = "Дата введения в эксплуатацию";
-            // 
-            // WorksOnEquipmentButton
-            // 
-            this.WorksOnEquipmentButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.WorksOnEquipmentButton.Image = ((System.Drawing.Image)(resources.GetObject("WorksOnEquipmentButton.Image")));
-            this.WorksOnEquipmentButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.WorksOnEquipmentButton.Name = "WorksOnEquipmentButton";
-            this.WorksOnEquipmentButton.Size = new System.Drawing.Size(155, 22);
-            this.WorksOnEquipmentButton.Text = "Работы по оборудованию";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(145, 35);
+            this.button1.Location = new System.Drawing.Point(145, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(153, 23);
             this.button1.TabIndex = 1;
@@ -135,7 +95,7 @@ namespace Equipment_maintenance
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(342, 35);
+            this.button2.Location = new System.Drawing.Point(342, 21);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 23);
             this.button2.TabIndex = 2;
@@ -147,7 +107,7 @@ namespace Equipment_maintenance
             this.pictureBox1.AccessibleDescription = "Местоположение";
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox1.Image = global::Equipment_maintenance.Properties.Resources.icons8_местоположение_банкомата_32;
-            this.pictureBox1.Location = new System.Drawing.Point(304, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(304, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -159,7 +119,7 @@ namespace Equipment_maintenance
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Equipment_maintenance.Properties.Resources.icons8_перемещение_запаса_30;
-            this.pictureBox2.Location = new System.Drawing.Point(109, 30);
+            this.pictureBox2.Location = new System.Drawing.Point(109, 14);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -171,7 +131,7 @@ namespace Equipment_maintenance
             this.pictureBox3.AccessibleDescription = "Местоположение";
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(461, 28);
+            this.pictureBox3.Location = new System.Drawing.Point(461, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(32, 32);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -186,12 +146,63 @@ namespace Equipment_maintenance
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
             this.создатьДокументToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(496, 34);
+            this.menuStrip1.Location = new System.Drawing.Point(496, 20);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(127, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(117, 20);
+            this.toolStripMenuItem1.Text = "Создать документ";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(233, 22);
+            this.toolStripMenuItem2.Text = "Акт ввода в эксплуатацию";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(233, 22);
+            this.toolStripMenuItem3.Text = "Акт приема-передачи";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(233, 22);
+            this.toolStripMenuItem4.Text = "Служебная записка";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(233, 22);
+            this.toolStripMenuItem5.Text = "Акт технической экспертизы";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(233, 22);
+            this.toolStripMenuItem6.Text = "Акт списания";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(233, 22);
+            this.toolStripMenuItem7.Text = "Отчет о работе";
             // 
             // создатьДокументToolStripMenuItem
             // 
@@ -201,7 +212,8 @@ namespace Equipment_maintenance
             this.актПриемапередачиToolStripMenuItem,
             this.служебнаяЗапискаToolStripMenuItem,
             this.актВыводаToolStripMenuItem,
-            this.актСписанияToolStripMenuItem});
+            this.актСписанияToolStripMenuItem,
+            this.отчетОРаботеToolStripMenuItem});
             this.создатьДокументToolStripMenuItem.Name = "создатьДокументToolStripMenuItem";
             this.создатьДокументToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
             this.создатьДокументToolStripMenuItem.Text = "Создать документ";
@@ -241,11 +253,18 @@ namespace Equipment_maintenance
             this.актСписанияToolStripMenuItem.Text = "Акт списания";
             this.актСписанияToolStripMenuItem.Click += new System.EventHandler(this.актСписанияToolStripMenuItem_Click);
             // 
+            // отчетОРаботеToolStripMenuItem
+            // 
+            this.отчетОРаботеToolStripMenuItem.Name = "отчетОРаботеToolStripMenuItem";
+            this.отчетОРаботеToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.отчетОРаботеToolStripMenuItem.Text = "Отчет о работе";
+            this.отчетОРаботеToolStripMenuItem.Click += new System.EventHandler(this.отчетОРаботеToolStripMenuItem_Click);
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(12, 28);
+            this.pictureBox4.Location = new System.Drawing.Point(12, 12);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 32);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -258,7 +277,7 @@ namespace Equipment_maintenance
             this.pictureBox5.AccessibleDescription = "Местоположение";
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(926, 6);
+            this.pictureBox5.Location = new System.Drawing.Point(926, 12);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(32, 32);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -267,11 +286,77 @@ namespace Equipment_maintenance
             this.pictureBox5.Tag = "Местоположение";
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.AccessibleDescription = "Местоположение";
+            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(626, 12);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox6.TabIndex = 10;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Tag = "Местоположение";
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.запросыToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(661, 21);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(188, 24);
+            this.menuStrip2.TabIndex = 11;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // запросыToolStripMenuItem
+            // 
+            this.запросыToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.запросыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оборудованиеВОтделеToolStripMenuItem,
+            this.историяПользователяToolStripMenuItem,
+            this.датаВведенияВЭксплуатациюToolStripMenuItem,
+            this.работыПоОборудованиюToolStripMenuItem});
+            this.запросыToolStripMenuItem.Name = "запросыToolStripMenuItem";
+            this.запросыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.запросыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // оборудованиеВОтделеToolStripMenuItem
+            // 
+            this.оборудованиеВОтделеToolStripMenuItem.Name = "оборудованиеВОтделеToolStripMenuItem";
+            this.оборудованиеВОтделеToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.оборудованиеВОтделеToolStripMenuItem.Text = "Оборудование в отделе";
+            this.оборудованиеВОтделеToolStripMenuItem.Click += new System.EventHandler(this.оборудованиеВОтделеToolStripMenuItem_Click);
+            // 
+            // историяПользователяToolStripMenuItem
+            // 
+            this.историяПользователяToolStripMenuItem.Name = "историяПользователяToolStripMenuItem";
+            this.историяПользователяToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.историяПользователяToolStripMenuItem.Text = "История пользователя";
+            this.историяПользователяToolStripMenuItem.Click += new System.EventHandler(this.историяПользователяToolStripMenuItem_Click);
+            // 
+            // датаВведенияВЭксплуатациюToolStripMenuItem
+            // 
+            this.датаВведенияВЭксплуатациюToolStripMenuItem.Name = "датаВведенияВЭксплуатациюToolStripMenuItem";
+            this.датаВведенияВЭксплуатациюToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.датаВведенияВЭксплуатациюToolStripMenuItem.Text = "Дата введения в эксплуатацию";
+            this.датаВведенияВЭксплуатациюToolStripMenuItem.Click += new System.EventHandler(this.датаВведенияВЭксплуатациюToolStripMenuItem_Click);
+            // 
+            // работыПоОборудованиюToolStripMenuItem
+            // 
+            this.работыПоОборудованиюToolStripMenuItem.Name = "работыПоОборудованиюToolStripMenuItem";
+            this.работыПоОборудованиюToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.работыПоОборудованиюToolStripMenuItem.Text = "Работы по оборудованию";
+            this.работыПоОборудованиюToolStripMenuItem.Click += new System.EventHandler(this.работыПоОборудованиюToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(970, 499);
+            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -281,7 +366,8 @@ namespace Equipment_maintenance
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.menuStrip2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -289,8 +375,6 @@ namespace Equipment_maintenance
             this.Text = "Ведение оборудования";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -298,6 +382,9 @@ namespace Equipment_maintenance
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,11 +399,6 @@ namespace Equipment_maintenance
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton EquipmentDepartmentButton;
-        private System.Windows.Forms.ToolStripButton HistoryEquipmentUserButton;
-        private System.Windows.Forms.ToolStripButton DateOperationButton;
-        private System.Windows.Forms.ToolStripButton WorksOnEquipmentButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem создатьДокументToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem актВводаToolStripMenuItem;
@@ -326,6 +408,21 @@ namespace Equipment_maintenance
         private System.Windows.Forms.ToolStripMenuItem служебнаяЗапискаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem актВыводаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem актСписанияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчетОРаботеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem запросыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оборудованиеВОтделеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem историяПользователяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem датаВведенияВЭксплуатациюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem работыПоОборудованиюToolStripMenuItem;
     }
 }
 

@@ -6,12 +6,11 @@ using Npgsql;
 
 namespace Equipment_maintenance
 {
-    public partial class Form2 : Form
+    public partial class Form8 : Form //акт приема передачи
     {
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
         private Label label6;
         private Label label7;
         private Label label9;
@@ -20,31 +19,29 @@ namespace Equipment_maintenance
         private TextBox textBox3;
         private TextBox textBox4;
         private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
         private Button button1;
         private TextBox textBox5;
         private Label label8;
         public List<string> act = new List<string>();
-        private Label label5;
+        private TextBox textBox7;
+        private Label label4;
         public NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam_Admin());
         //public NpgsqlConnection conn = new NpgsqlConnection("Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"); //на сервере
         //public string conn_param = "Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"; //строка подключения к БД
-        public Form2()
+        public Form8()
         {
             InitializeComponent();
-            conn.Open(); //Открываем соединение
+            
+            //textBox3.Text = DateTime.Now.ToString();
             textBox1.Text = idDoc();
-            //textBox4.Text = DateTime.Now.ToString();
             
         }
-        
+
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,22 +51,21 @@ namespace Equipment_maintenance
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(56, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(335, 25);
+            this.label1.Size = new System.Drawing.Size(240, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Создание акта ввода в эксплуатацию";
+            this.label1.Text = "Создание отчета о работе";
             // 
             // label2
             // 
@@ -89,41 +85,32 @@ namespace Equipment_maintenance
             this.label3.TabIndex = 2;
             this.label3.Text = "Заявитель";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 111);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Уполномоченное лицо";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 141);
+            this.label6.Location = new System.Drawing.Point(5, 111);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 15);
+            this.label6.Size = new System.Drawing.Size(98, 15);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Примечание";
+            this.label6.Text = "idОборудования";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 171);
+            this.label7.Location = new System.Drawing.Point(5, 141);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 15);
+            this.label7.Size = new System.Drawing.Size(71, 15);
             this.label7.TabIndex = 6;
-            this.label7.Text = "idОборудования";
+            this.label7.Text = "Тип работы";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 231);
+            this.label9.Location = new System.Drawing.Point(5, 201);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 15);
+            this.label9.Size = new System.Drawing.Size(62, 15);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Тип оборудования";
+            this.label9.Text = "Описание";
             // 
             // textBox1
             // 
@@ -167,23 +154,9 @@ namespace Equipment_maintenance
             this.textBox6.Size = new System.Drawing.Size(167, 23);
             this.textBox6.TabIndex = 16;
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(147, 228);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(167, 23);
-            this.textBox7.TabIndex = 17;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(147, 258);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(167, 23);
-            this.textBox8.TabIndex = 18;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(254, 290);
+            this.button1.Location = new System.Drawing.Point(254, 265);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 19;
@@ -194,28 +167,34 @@ namespace Equipment_maintenance
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 201);
+            this.label8.Location = new System.Drawing.Point(5, 171);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 15);
+            this.label8.Size = new System.Drawing.Size(57, 15);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Наименование";
+            this.label8.Text = "Причина";
             // 
-            // label5
+            // textBox7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 261);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Стоимость";
+            this.textBox7.Location = new System.Drawing.Point(147, 230);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(167, 23);
+            this.textBox7.TabIndex = 21;
             // 
-            // Form2
+            // label4
             // 
-            this.ClientSize = new System.Drawing.Size(341, 316);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox8);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 233);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 15);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Результат";
+            // 
+            // Form8
+            // 
+            this.ClientSize = new System.Drawing.Size(341, 300);
             this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
@@ -226,11 +205,10 @@ namespace Equipment_maintenance
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form2";
+            this.Name = "Form8";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
@@ -240,75 +218,82 @@ namespace Equipment_maintenance
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            TextBox[] tbs = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
-           
-            for (int i = 0; i < 8; i++)
+            TextBox[] tbs = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7 };
+
+            for (int i = 0; i < 7; i++)
                 act.Add(tbs[i].Text); //забираем ответы из формы
-                
             insertBD(act); //добавляем данные в таблицы БД
             this.Hide();
             Form1 form1 = new Form1();
             form1.Enabled = true;
-            MessageBox.Show("Успешно!");
-            
-        }
-        private string idDoc() //берем id для нового документа (прибавляем 1 к старому)
-        {
-            string idDoc = "";
 
-            NpgsqlCommand com = new NpgsqlCommand($"SELECT NULLIF(idДокумента, '')::int FROM commissioning_acts ORDER BY NULLIF(idДокумента, '')::int DESC LIMIT 1", conn);
-            
-            DataTable dt = new DataTable();
-            dt.Load(com.ExecuteReader()); //загружаем в dt вывод запроса
-            if (dt.Rows.Count == 0) //если строк нет, создаем первый айди
-                idDoc = "101";
-            else
-                idDoc = (Int32.Parse(dt.Rows[0].ItemArray[0].ToString()) + 1).ToString();
-            return idDoc;
         }
-        
         private void insertBD(List<string> act)
         {
             //string conn_param = "Server=localhost;Port=5432;User Id=postgres;Password=*SCUOihj2;Database=Equipment_maintenance;"; //строка подключения к БД
 
             try
             {
+                conn.Open(); //Открываем соединение
+                NpgsqlCommand com = new NpgsqlCommand($"insert into handover_acts values ({act[0]}, '{act[1]}', '{DateTime.Now.ToString()}', '{act[2]}', '{act[3]}', '{act[4]}', '{act[5]}', {act[6]})", conn); //insert-им акт передачи
+                com.ExecuteNonQueryAsync(); //выполняем запрос
 
-                //using (NpgsqlCommand com = new NpgsqlCommand($"insert into equipment values ('{act[4]}', '4', '{act[6]}', '{act[5]}', 'Резерв', '1', '{act[3]}', '0', '{act[7]}')", conn)) //insert-им оборудование
-                //{
-                    
-                //    com.ExecuteNonQuery(); //выполняем запрос
-                //}
-
-
-                using (NpgsqlCommand com1 = new NpgsqlCommand($"insert into commissioning_acts values ('{act[0]}', '{act[1]}', '{DateTime.Now.ToString()}', '{act[4]}', '{act[6]}', '{act[5]}', '{act[7]}')", conn)) //insert-им акт ввода
-                { 
-                    com1.ExecuteNonQuery(); //выполняем запрос
+                //проверка на idАдреса 
+                NpgsqlCommand com3 = new NpgsqlCommand($"select * from equipment_addresses ORDER BY idАдреса DESC LIMIT 1", conn); //insert-им адрес резерва
+                DataTable dt = new DataTable();
+                dt.Load(com3.ExecuteReader()); //загружаем в dt вывод запроса
+                int numberID = Int32.Parse(dt.Rows[0].ItemArray[0].ToString());
+                if(numberID == Int32.Parse(act[6]))
+                {
+                    numberID = 0; //ничего не делаем
                 }
-                
-                //string idDvig = "";
-                //using (NpgsqlCommand com2 = new NpgsqlCommand($"SELECT idДвижения FROM equipment_movements ORDER BY idДвижения DESC LIMIT 1", conn)) //insert-им адрес резерва
-                //{ 
-                //    DataTable dt = new DataTable();
-                //    dt.Load(com2.ExecuteReader()); //загружаем в dt вывод запроса
-                //    if (dt.Rows.Count == 0) //если строк нет, создаем первый айди
-                //        idDvig = "1";
-                //    else
-                //        idDvig = dt.Rows[0].ItemArray[0].ToString();
-                //    idDvig = (Int32.Parse(idDvig) + 1).ToString();
-                //}
-                //using (NpgsqlCommand com3 = new NpgsqlCommand($"insert into equipment_movements values ({idDvig}, '{act[4]}', 'Резерв', 1, 'Акт ввода в эксплуатацию', '{act[0]}', '{DateTime.Now.ToString()}')", conn)) //insert-им движение
-                //{
-                //    com3.ExecuteNonQuery(); //выполняем запрос
-                //}
-                    
+                else //добавляем новую запись
+                {
+                    NpgsqlCommand com1 = new NpgsqlCommand($"insert into equipment_addresses values ({act[6]}, '{act[7]}', {act[8]}, {act[9]}, {act[10]}, '{act[11]}')", conn); //insert-им новый адрес
+                    com1.ExecuteNonQueryAsync(); //выполняем запрос
+                }
+
+                string idDvig = "";
+                NpgsqlCommand com2 = new NpgsqlCommand($"SELECT idДвижения FROM equipment_movements ORDER BY idДвижения DESC LIMIT 1", conn); //выбор нового id для движения
+                DataTable dt2 = new DataTable();
+                dt.Load(com2.ExecuteReader()); //загружаем в dt вывод запроса
+                if (dt.Rows.Count == 0) //если строк нет, создаем первый айди
+                    idDvig = "1";
+                else
+                    idDvig = dt2.Rows[0].ItemArray[0].ToString();
+                idDvig = (Int32.Parse(idDvig) + 1).ToString();
+                NpgsqlCommand com4 = new NpgsqlCommand($"insert into equipment_movements values ({idDvig}, '{act[2]}', '{act[3]}', '{act[6]}', 'Акт приема-передачи', {act[0]}, '{DateTime.Now.ToString()}')", conn); //insert-им движение
+                com4.ExecuteNonQueryAsync(); //выполняем запрос
+
+                //и update оборудования
+                NpgsqlCommand com5 = new NpgsqlCommand($"update equipment set idАдреса = {act[6]}, Статус = 1 where idОборудования = '{act[2]}'", conn); //insert-им движение
+                com5.ExecuteNonQueryAsync(); //выполняем запрос
+
+                conn.Close(); //Закрываем соединение
+                MessageBox.Show("Успешно!");
             }
             catch (Exception ex)
             {
                 conn.Close(); //Закрываем соединение
-                MessageBox.Show("Error " + ex.Message);
+                MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
+        private string idDoc() //берем id для нового документа (прибавляем 1 к старому)
+        {
+            conn.Open(); //Открываем соединение
+            string idDoc = "";
+
+            NpgsqlCommand com = new NpgsqlCommand($"SELECT NULLIF(idДокумента, '')::int FROM handover_acts ORDER BY NULLIF(idДокумента, '')::int DESC LIMIT 1", conn); 
+            DataTable dt = new DataTable();
+            dt.Load(com.ExecuteReader()); //загружаем в dt вывод запроса
+            if (dt.Rows.Count == 0) //если строк нет, создаем первый айди
+                idDoc = "101";
+            else
+                idDoc = (Int32.Parse(dt.Rows[0].ItemArray[0].ToString()) + 1).ToString();
+            conn.Close();
+            return idDoc;
+        }
+       
         private void Form2_Load(object sender, System.EventArgs e)
         {
 

@@ -179,6 +179,8 @@ namespace Equipment_maintenance
                     this.Hide();
                     textBox1.Text = "";
                     textBox2.Text = "";
+                    var connection = new NpgsqlConnection(Connection.ConnParam());
+
                 }
                 else
                 {

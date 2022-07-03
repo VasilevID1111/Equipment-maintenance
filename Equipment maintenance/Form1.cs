@@ -15,7 +15,12 @@ namespace Equipment_maintenance
             InitializeComponent();
 
         }
-
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            Form3 form3 = new Form3();
+            form3.Show();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadBD(); //загружаем БД
@@ -28,7 +33,7 @@ namespace Equipment_maintenance
             служебнаяЗапискаToolStripMenuItem.Enabled = false;
             актВыводаToolStripMenuItem.Enabled = false;
             актСписанияToolStripMenuItem.Enabled = false; //делаем недоступным создние документов
-            
+            отчетОРаботеToolStripMenuItem.Enabled = false;
             //string conn_param = "Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"; //строка подключения к БД
             if (Connection.Nickname == "purchasing") //и даем "права" на создание документов
             {
@@ -38,6 +43,7 @@ namespace Equipment_maintenance
             {
                 актПриемапередачиToolStripMenuItem.Enabled = true;
                 служебнаяЗапискаToolStripMenuItem.Enabled = true;
+                отчетОРаботеToolStripMenuItem.Enabled = true;
             }
             else if (Connection.Nickname == "decommissing")
             {
@@ -63,17 +69,13 @@ namespace Equipment_maintenance
                     }
                     else if (proverka == "2")
                     {
-                        dt.Rows[i][1] = "Сломано";
+                        dt.Rows[i][1] = "В ремонте";
                     }
                     else if (proverka == "3")
                     {
-                        dt.Rows[i][1] = "В ремонте";
-                    }
-                    else if (proverka == "4")
-                    {
                         dt.Rows[i][1] = "В резерве";
                     }
-                    else if (proverka == "5")
+                    else if (proverka == "4")
                     {
                         dt.Rows[i][1] = "Утилизировано";
                     }
@@ -114,13 +116,7 @@ namespace Equipment_maintenance
         }
         private void EquipmentDepartmentButton_Click(object sender, EventArgs e)
         {
-            UserChoice UserChoice = new UserChoice("Введите название отдела");
-            UserChoice.ShowDialog();
-            DataTable dt;
-            string select = "select O.Наименование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса and A.Отдел = '" + UserChoiceClass.Value + "'";
-            dt = SelectDB(select);
-            dataGridView1.DataSource = null; //reset
-            dataGridView1.DataSource = dt;
+            
         }
 
         private DataTable SelectDB(string select)
@@ -161,17 +157,68 @@ namespace Equipment_maintenance
 
         private void служебнаяЗапискаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form5 form5 = new Form5();
+            form5.ShowDialog();
         }
 
         private void актВыводаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form6 form6 = new Form6();
+            form6.ShowDialog();
         }
 
         private void актСписанияToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form7 form7 = new Form7();
+            form7.ShowDialog();
+        }
 
+        private void отчетОРаботеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form8 form8 = new Form8();
+            form8.ShowDialog();
+        }
+
+        private void toolStripMenuItem15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void оборудованиеВОтделеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserChoice UserChoice = new UserChoice("Введите название отдела");
+            UserChoice.ShowDialog();
+            DataTable dt;
+            string select = "select O.Наименование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса and A.Отдел = '" + UserChoiceClass.Value + "'";
+            dt = SelectDB(select);
+            dataGridView1.DataSource = null; //reset
+            dataGridView1.DataSource = dt;
+        }
+
+        private void историяПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserChoice UserChoice = new UserChoice("Введите ФИО пользователя");
+            UserChoice.ShowDialog();
+            DataTable dt;
+            string select = "select distinct О.Наименование from equipment as О inner join equipment_movements as Д on О.idОборудования = Д.idОборудования where Д.НовыйВладелец = '" + UserChoiceClass.Value + "'";
+            dt = SelectDB(select);
+            dataGridView1.DataSource = null; //reset
+            dataGridView1.DataSource = dt;
+        }
+
+        private void датаВведенияВЭксплуатациюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            DataTable dt;
+            string select = "select O.Наименование, Д.ДатаДвижения from equipment as O inner join equipment_movements as Д on O.idОборудования = Д.idОборудования where Д.ТипДокумента = 'Акт ввода в эксплуатацию'";
+            dt = SelectDB(select);
+            dataGridView1.DataSource = null; //reset
+            dataGridView1.DataSource = dt;
+        }
+
+        private void работыПоОборудованиюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
