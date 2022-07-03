@@ -81,7 +81,7 @@ namespace Equipment_maintenance
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(970, 449);
+            this.dataGridView1.Size = new System.Drawing.Size(1096, 449);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -105,7 +105,6 @@ namespace Equipment_maintenance
             // pictureBox1
             // 
             this.pictureBox1.AccessibleDescription = "Местоположение";
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox1.Image = global::Equipment_maintenance.Properties.Resources.icons8_местоположение_банкомата_32;
             this.pictureBox1.Location = new System.Drawing.Point(304, 12);
             this.pictureBox1.Name = "pictureBox1";
@@ -129,7 +128,6 @@ namespace Equipment_maintenance
             // pictureBox3
             // 
             this.pictureBox3.AccessibleDescription = "Местоположение";
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(461, 12);
             this.pictureBox3.Name = "pictureBox3";
@@ -148,7 +146,7 @@ namespace Equipment_maintenance
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.создатьДокументToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(496, 19);
+            this.menuStrip1.Location = new System.Drawing.Point(496, 18);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(127, 24);
             this.menuStrip1.TabIndex = 7;
@@ -283,7 +281,7 @@ namespace Equipment_maintenance
             this.pictureBox5.AccessibleDescription = "Местоположение";
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(926, 12);
+            this.pictureBox5.Location = new System.Drawing.Point(1052, 12);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(32, 32);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -295,7 +293,6 @@ namespace Equipment_maintenance
             // pictureBox6
             // 
             this.pictureBox6.AccessibleDescription = "Местоположение";
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.Location = new System.Drawing.Point(626, 12);
             this.pictureBox6.Name = "pictureBox6";
@@ -363,7 +360,7 @@ namespace Equipment_maintenance
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(970, 499);
+            this.ClientSize = new System.Drawing.Size(1096, 499);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
