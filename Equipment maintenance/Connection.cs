@@ -14,11 +14,17 @@ namespace Equipment_maintenance
         //private static string Port = "5432";
         //private static string DB = "Equipment_maintenance";
 
+        //private static string Admin_login = "postgres";
+        //private static string Admin_password = "masterkey";
+        //private static string Server = "localhost";
+        //private static string Port = "5432";
+        //private static string DB = "devices";
+
         private static string Admin_login = "postgres";
-        private static string Admin_password = "masterkey";
-        private static string Server = "localhost";
+        private static string Admin_password = "g5jT*CwX";
+        private static string Server = "62.113.111.2";
         private static string Port = "5432";
-        private static string DB = "devices";
+        private static string DB = "equipment";
 
 
         public static string Nickname { get; set; }
