@@ -222,7 +222,7 @@ namespace Equipment_maintenance
             UserChoice UserChoice = new UserChoice("Введите наименование оборудования");
             UserChoice.ShowDialog();
             DataTable dt;
-            string select = "select С.ТипРаботы, С.Описание from service_memos as С inner join equipment_movements as Д on С.idДокумента = Д.idДокумента and Д.ТипДокумента = 'Записка' inner join equipment as О on О.idОборудования = Д.idОборудования and О.Наименование = '" + UserChoiceClass.Value + "'";
+            string select = "select С.ТипРаботы, С.Описание from service_memos as С inner join equipment_movements as Д on С.idДокумента = Д.idДокумента and Д.ТипДокумента = 'Служебная записка о ремонте' inner join equipment as О on О.idОборудования = Д.idОборудования and О.Наименование = '" + UserChoiceClass.Value + "'";
             dt = SelectDB(select);
             dataGridView1.DataSource = null; //reset
             dataGridView1.DataSource = dt;
