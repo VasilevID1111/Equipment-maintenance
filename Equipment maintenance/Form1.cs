@@ -190,7 +190,7 @@ namespace Equipment_maintenance
             UserChoice UserChoice = new UserChoice("Введите название отдела");
             UserChoice.ShowDialog();
             DataTable dt;
-            string select = "select O.Наименование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса and A.Отдел = '" + UserChoiceClass.Value + "'";
+            string select = "select O.idОборудования, O.ТипОборудования, O.Наименование, O.МатОтвЛицо from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса and A.Отдел = '" + UserChoiceClass.Value + "'";
             dt = SelectDB(select);
             dataGridView1.DataSource = null; //reset
             dataGridView1.DataSource = dt;
@@ -201,7 +201,7 @@ namespace Equipment_maintenance
             UserChoice UserChoice = new UserChoice("Введите ФИО пользователя");
             UserChoice.ShowDialog();
             DataTable dt;
-            string select = "select distinct О.Наименование from equipment as О inner join equipment_movements as Д on О.idОборудования = Д.idОборудования where Д.НовыйВладелец = '" + UserChoiceClass.Value + "'";
+            string select = "select distinct О.idОборудования, О.ТипОборудования, О.Наименование, О.МатОтвЛицо from equipment as О inner join equipment_movements as Д on О.idОборудования = Д.idОборудования where Д.НовыйВладелец = '" + UserChoiceClass.Value + "'";
             dt = SelectDB(select);
             dataGridView1.DataSource = null; //reset
             dataGridView1.DataSource = dt;
@@ -211,7 +211,7 @@ namespace Equipment_maintenance
         {
             
             DataTable dt;
-            string select = "select O.Наименование, Д.ДатаДвижения from equipment as O inner join equipment_movements as Д on O.idОборудования = Д.idОборудования where Д.ТипДокумента = 'Акт ввода в эксплуатацию'";
+            string select = "select  O.idОборудования, O.Наименование, Д.ДатаДвижения from equipment as O inner join equipment_movements as Д on O.idОборудования = Д.idОборудования where Д.ТипДокумента = 'Ввод в эксплуатацию'";
             dt = SelectDB(select);
             dataGridView1.DataSource = null; //reset
             dataGridView1.DataSource = dt;
@@ -219,10 +219,10 @@ namespace Equipment_maintenance
 
         private void работыПоОборудованиюToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserChoice UserChoice = new UserChoice("Введите наименование оборудования");
+            UserChoice UserChoice = new UserChoice("Введите id оборудования");
             UserChoice.ShowDialog();
             DataTable dt;
-            string select = "select С.ТипРаботы, С.Описание from service_memos as С inner join equipment_movements as Д on С.idДокумента = Д.idДокумента and Д.ТипДокумента = 'Служебная записка о ремонте' inner join equipment as О on О.idОборудования = Д.idОборудования and О.Наименование = '" + UserChoiceClass.Value + "'";
+            string select = "select idОборудования, ТипРаботы, Причина, Описание from reports_works as R where idОборудования and О.idОборудования = '" + UserChoiceClass.Value + "'";
             dt = SelectDB(select);
             dataGridView1.DataSource = null; //reset
             dataGridView1.DataSource = dt;

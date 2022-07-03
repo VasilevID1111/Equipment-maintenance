@@ -8,17 +8,17 @@ namespace Equipment_maintenance
 {
     static class Connection
     {
-        private static string Admin_login = "postgres";
-        private static string Admin_password = "*SCUOihj2";
-
-
-        private static string Server = "localhost";
-        private static string Port = "5432";
-        private static string DB = "Equipment_maintenance";
-
+        //private static string Admin_login = "postgres";
+        //private static string Admin_password = "*SCUOihj2";
         //private static string Server = "localhost";
         //private static string Port = "5432";
-        //private static string DB = "devices";
+        //private static string DB = "Equipment_maintenance";
+
+        private static string Admin_login = "postgres";
+        private static string Admin_password = "masterkey";
+        private static string Server = "localhost";
+        private static string Port = "5432";
+        private static string DB = "devices";
 
 
         public static string Nickname { get; set; }
