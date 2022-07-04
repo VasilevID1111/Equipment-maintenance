@@ -253,7 +253,7 @@ namespace Equipment_maintenance
             
             string idDoc = "";
 
-            NpgsqlCommand com = new NpgsqlCommand($"SELECT NULLIF(idДокумента, '')::int FROM handover_acts ORDER BY NULLIF(idДокумента, '')::int DESC LIMIT 1", conn); 
+            NpgsqlCommand com = new NpgsqlCommand($"SELECT NULLIF(idДокумента, '')::int FROM reports_works ORDER BY NULLIF(idДокумента, '')::int DESC LIMIT 1", conn); 
             DataTable dt = new DataTable();
             dt.Load(com.ExecuteReader()); //загружаем в dt вывод запроса
             if (dt.Rows.Count == 0) //если строк нет, создаем первый айди

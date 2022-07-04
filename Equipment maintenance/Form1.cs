@@ -9,7 +9,7 @@ namespace Equipment_maintenance
     public partial class Form1 : Form
     {
 
-
+        public bool a = true;
         public Form1()
         {
             InitializeComponent();
@@ -18,8 +18,8 @@ namespace Equipment_maintenance
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            Form3 form3 = new Form3();
-            form3.Show();
+            if(a)
+                Environment.Exit(0);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -134,11 +134,13 @@ namespace Equipment_maintenance
             LoadBD();
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBox5_Click(object sender, EventArgs e) //выход из аккаунта
         {
+            a = false;
             this.Close();
             Form3 form3 = new Form3();
             form3.Show();
+            a = true;
         }
         private void EquipmentDepartmentButton_Click(object sender, EventArgs e)
         {

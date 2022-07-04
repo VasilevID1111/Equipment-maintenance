@@ -17,13 +17,11 @@ namespace Equipment_maintenance
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
         private Label label6;
         private Label label7;
         private Label label9;
         private TextBox textBox1;
         private TextBox textBox2;
-        private TextBox textBox3;
         private TextBox textBox4;
         private TextBox textBox6;
         private TextBox textBox7;
@@ -57,13 +55,11 @@ namespace Equipment_maintenance
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -102,19 +98,10 @@ namespace Equipment_maintenance
             this.label3.TabIndex = 2;
             this.label3.Text = "Заявитель";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 111);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Уполномоченное лицо";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 141);
+            this.label6.Location = new System.Drawing.Point(5, 110);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 15);
             this.label6.TabIndex = 5;
@@ -123,7 +110,7 @@ namespace Equipment_maintenance
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 171);
+            this.label7.Location = new System.Drawing.Point(4, 140);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 15);
             this.label7.TabIndex = 6;
@@ -132,7 +119,7 @@ namespace Equipment_maintenance
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 231);
+            this.label9.Location = new System.Drawing.Point(5, 200);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(109, 15);
             this.label9.TabIndex = 8;
@@ -152,51 +139,44 @@ namespace Equipment_maintenance
             this.textBox2.Size = new System.Drawing.Size(167, 23);
             this.textBox2.TabIndex = 12;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(147, 108);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(167, 23);
-            this.textBox3.TabIndex = 13;
-            // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(147, 138);
+            this.textBox4.Location = new System.Drawing.Point(147, 107);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(167, 23);
             this.textBox4.TabIndex = 14;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(147, 168);
+            this.textBox5.Location = new System.Drawing.Point(147, 137);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(167, 23);
             this.textBox5.TabIndex = 15;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(147, 198);
+            this.textBox6.Location = new System.Drawing.Point(147, 167);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(167, 23);
             this.textBox6.TabIndex = 16;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(147, 228);
+            this.textBox7.Location = new System.Drawing.Point(147, 197);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(167, 23);
             this.textBox7.TabIndex = 17;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(147, 258);
+            this.textBox8.Location = new System.Drawing.Point(147, 226);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(167, 23);
             this.textBox8.TabIndex = 18;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(254, 290);
+            this.button1.Location = new System.Drawing.Point(254, 255);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 19;
@@ -207,7 +187,7 @@ namespace Equipment_maintenance
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 201);
+            this.label8.Location = new System.Drawing.Point(4, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 15);
             this.label8.TabIndex = 7;
@@ -216,7 +196,7 @@ namespace Equipment_maintenance
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 261);
+            this.label5.Location = new System.Drawing.Point(5, 230);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 15);
             this.label5.TabIndex = 21;
@@ -224,7 +204,7 @@ namespace Equipment_maintenance
             // 
             // Form2
             // 
-            this.ClientSize = new System.Drawing.Size(341, 316);
+            this.ClientSize = new System.Drawing.Size(341, 284);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox8);
@@ -232,14 +212,12 @@ namespace Equipment_maintenance
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -253,7 +231,7 @@ namespace Equipment_maintenance
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            TextBox[] tbs = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
+            TextBox[] tbs = { textBox1, textBox2, textBox4, textBox5, textBox6, textBox7, textBox8 };
            
             for (int i = 0; i < 8; i++)
                 act.Add(tbs[i].Text); //забираем ответы из формы
