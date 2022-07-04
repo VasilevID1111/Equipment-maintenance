@@ -73,7 +73,16 @@ namespace Equipment_maintenance
             conn.Open(); //Открываем соединение
             try
             {
-                NpgsqlCommand com = new NpgsqlCommand(@"select idОборудования, ТипОборудования, Наименование, Пользователь, 'Корпус ' || A.Корпус || ', этаж ' ||  A.Этаж::text || ', комната ' || A.Комната::text as Адрес, Прочее, idКомпановки, Стоимость, ДопОборудование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса", conn); //запрос - select
+                NpgsqlCommand com;
+                if (Connection.Nickname == "default_user")
+                    com = new NpgsqlCommand(@"select idОборудования, Статус, ТипОборудования, Наименование, Пользователь, 'Корпус ' || A.Корпус || ', этаж ' ||  A.Этаж::text || ', комната ' || A.Комната::text as Адрес, Прочее, idКомпановки, Стоимость, ДопОборудование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса", conn); //запрос - select
+                else if(Connection.Nickname == "repair")
+                    com = new NpgsqlCommand(@"select idОборудования, Статус, ТипОборудования, Наименование, Пользователь, 'Корпус ' || A.Корпус || ', этаж ' ||  A.Этаж::text || ', комната ' || A.Комната::text as Адрес, Прочее, idКомпановки, Стоимость, ДопОборудование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса where Статус = 1::text or Статус = 2::text or Статус = 3::text", conn); //запрос - select
+                else if(Connection.Nickname == "purchasing")
+                    com = new NpgsqlCommand(@"select idОборудования, Статус, ТипОборудования, Наименование, Пользователь, 'Корпус ' || A.Корпус || ', этаж ' ||  A.Этаж::text || ', комната ' || A.Комната::text as Адрес, Прочее, idКомпановки, Стоимость, ДопОборудование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса where Статус = 3::text", conn); //запрос - select
+                else
+                    com = new NpgsqlCommand(@"select idОборудования, Статус, ТипОборудования, Наименование, Пользователь, 'Корпус ' || A.Корпус || ', этаж ' ||  A.Этаж::text || ', комната ' || A.Комната::text as Адрес, Прочее, idКомпановки, Стоимость, ДопОборудование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса where Статус = 3::text or Статус = 4::text", conn); //запрос - select
+
                 DataTable dt = new DataTable(); 
                 dt.Load(com.ExecuteReader()); //загружаем в dt вывод запроса
                 
