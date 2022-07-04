@@ -317,7 +317,7 @@ namespace Equipment_maintenance
             this.запросыToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(496, 18);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(68, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(188, 24);
             this.menuStrip2.TabIndex = 11;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -337,28 +337,28 @@ namespace Equipment_maintenance
             // оборудованиеВОтделеToolStripMenuItem
             // 
             this.оборудованиеВОтделеToolStripMenuItem.Name = "оборудованиеВОтделеToolStripMenuItem";
-            this.оборудованиеВОтделеToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.оборудованиеВОтделеToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.оборудованиеВОтделеToolStripMenuItem.Text = "Оборудование в отделе";
             this.оборудованиеВОтделеToolStripMenuItem.Click += new System.EventHandler(this.оборудованиеВОтделеToolStripMenuItem_Click);
             // 
             // историяПользователяToolStripMenuItem
             // 
             this.историяПользователяToolStripMenuItem.Name = "историяПользователяToolStripMenuItem";
-            this.историяПользователяToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.историяПользователяToolStripMenuItem.Text = "История пользователя";
+            this.историяПользователяToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.историяПользователяToolStripMenuItem.Text = "Оборудование пользователя за все время";
             this.историяПользователяToolStripMenuItem.Click += new System.EventHandler(this.историяПользователяToolStripMenuItem_Click);
             // 
             // датаВведенияВЭксплуатациюToolStripMenuItem
             // 
             this.датаВведенияВЭксплуатациюToolStripMenuItem.Name = "датаВведенияВЭксплуатациюToolStripMenuItem";
-            this.датаВведенияВЭксплуатациюToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.датаВведенияВЭксплуатациюToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.датаВведенияВЭксплуатациюToolStripMenuItem.Text = "Дата введения в эксплуатацию";
             this.датаВведенияВЭксплуатациюToolStripMenuItem.Click += new System.EventHandler(this.датаВведенияВЭксплуатациюToolStripMenuItem_Click);
             // 
             // работыПоОборудованиюToolStripMenuItem
             // 
             this.работыПоОборудованиюToolStripMenuItem.Name = "работыПоОборудованиюToolStripMenuItem";
-            this.работыПоОборудованиюToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.работыПоОборудованиюToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.работыПоОборудованиюToolStripMenuItem.Text = "Работы по оборудованию";
             this.работыПоОборудованиюToolStripMenuItem.Click += new System.EventHandler(this.работыПоОборудованиюToolStripMenuItem_Click);
             // 

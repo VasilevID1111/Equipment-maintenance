@@ -233,7 +233,7 @@ namespace Equipment_maintenance
         {
             TextBox[] tbs = { textBox1, textBox2, textBox4, textBox5, textBox6, textBox7, textBox8 };
            
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
                 act.Add(tbs[i].Text); //забираем ответы из формы
                 
             insertBD(act); //добавляем данные в таблицы БД
@@ -241,7 +241,7 @@ namespace Equipment_maintenance
             Form1 form1 = new Form1();
             form1.Enabled = true;
             MessageBox.Show("Успешно!");
-            
+
         }
         private string idDoc() //берем id для нового документа (прибавляем 1 к старому)
         {
@@ -272,7 +272,7 @@ namespace Equipment_maintenance
                 //}
 
 
-                using (NpgsqlCommand com1 = new NpgsqlCommand($"insert into commissioning_acts values ('{act[0]}', '{act[1]}', '{DateTime.Now.ToString()}', '{act[4]}', '{act[6]}', '{act[5]}', '{act[7]}')", conn)) //insert-им акт ввода
+                using (NpgsqlCommand com1 = new NpgsqlCommand($"insert into commissioning_acts values ('{act[0]}', '{act[1]}', '{DateTime.Now.ToString()}', '{act[3]}', '{act[5]}', '{act[4]}', '{act[6]}')", conn)) //insert-им акт ввода
                 { 
                     com1.ExecuteNonQuery(); //выполняем запрос
                 }

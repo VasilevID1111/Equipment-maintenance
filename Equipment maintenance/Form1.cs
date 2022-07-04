@@ -10,6 +10,7 @@ namespace Equipment_maintenance
     {
 
         public bool a = true;
+        private DataTable dt_for_address_id_equipment = new DataTable(); //пипец костыль, для работы местоположения, сюда запишем idшники, по хорошему переделать заполнение таблицы на форме
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace Equipment_maintenance
         {
             LoadBD(); //загружаем БД
         }
-        
+
         private void LoadBD() 
         {
             //menuStrip1.Visible = true;
@@ -65,8 +66,8 @@ namespace Equipment_maintenance
             else if (Connection.Nickname == "default_user")
             {
                 this.Text = "Ведение оборудования - Обычный пользователь";
-                //toolStripMenuItem1.Visible = false;
-                //menuStrip1.Visible = false;
+                toolStripMenuItem1.Visible = false;
+                menuStrip1.Visible = false;
                 pictureBox3.Visible = false;
             }
             NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam());
@@ -111,7 +112,12 @@ namespace Equipment_maintenance
 
                 dataGridView1.DataSource = null; //reset
                 dataGridView1.DataSource = dt;
-                
+
+                conn.Open();
+                com = new NpgsqlCommand(@"select idОборудования, idАдреса from equipment", conn);
+                dt_for_address_id_equipment.Load(com.ExecuteReader());
+                conn.Close();
+
             }
             catch(Exception ex)
             {
@@ -220,27 +226,39 @@ namespace Equipment_maintenance
             if(UserChoiceClass.Value != null)
             {
                 DataTable dt;
-                string select = "select O.idОборудования, O.ТипОборудования, O.Наименование, O.МатОтвЛицо, Д.ДатаДвижения from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса and A.Отдел = '" + UserChoiceClass.Value + "' inner join equipment_movements as Д on O.idОборудования = Д.idОборудования";
+                string select = "select O.idОборудования, O.ТипОборудования, O.Наименование, O.Пользователь, MAX(Д.ДатаДвижения)  from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса and A.Отдел = '" + UserChoiceClass.Value + "' inner join equipment_movements as Д on O.idОборудования = Д.idОборудования and O.Пользователь = Д.НовыйВладелец group by O.idОборудования, O.ТипОборудования, O.Наименование, O.Пользователь";
                 dt = SelectDB(select);
                 dataGridView1.DataSource = null; //reset
                 dataGridView1.DataSource = dt;
             }
-            
+            UserChoiceClass.Value = null;
+
+
         }
 
         private void историяПользователяToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserChoice UserChoice = new UserChoice("Введите ФИО пользователя");
-            UserChoice.ShowDialog();
-            
+            if (dataGridView1.SelectedRows.Count != 0)
+            {
+                string FIO = dataGridView1[4, dataGridView1.SelectedRows[0].Index].Value.ToString();
+                UserChoice UserChoice = new UserChoice("Введите ФИО пользователя", FIO);
+                UserChoice.ShowDialog();
+            }
+            else
+            {
+                UserChoice UserChoice = new UserChoice("Введите ФИО пользователя");
+                UserChoice.ShowDialog();
+            }
+
             if (UserChoiceClass.Value != null)
             {
                 DataTable dt;
-                string select = "select distinct О.idОборудования, О.ТипОборудования, О.Наименование, О.МатОтвЛицо, Д.ДатаДвижения from equipment as О inner join equipment_movements as Д on О.idОборудования = Д.idОборудования where Д.НовыйВладелец = '" + UserChoiceClass.Value + "'";
+                string select = "select О.idОборудования, О.ТипОборудования, О.Наименование, О.Стоимость, О.ДопОборудование, MAX(Д.ДатаДвижения) from equipment as О inner join equipment_movements as Д on О.idОборудования = Д.idОборудования where Д.НовыйВладелец = '" + UserChoiceClass.Value + "' group by О.idОборудования, О.ТипОборудования, О.Наименование, О.Пользователь, О.ДопОборудование";
                 dt = SelectDB(select);
                 dataGridView1.DataSource = null; //reset
                 dataGridView1.DataSource = dt;
             }
+            UserChoiceClass.Value = null;
         }
 
         private void датаВведенияВЭксплуатациюToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,16 +273,25 @@ namespace Equipment_maintenance
 
         private void работыПоОборудованиюToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserChoice UserChoice = new UserChoice("Введите id оборудования");
-            UserChoice.ShowDialog();
+            if (dataGridView1.SelectedRows.Count != 0)
+            {
+                string idEquipment = dataGridView1[0, dataGridView1.SelectedRows[0].Index].Value.ToString();
+                UserChoice UserChoice = new UserChoice("Введите id оборудования", idEquipment);
+                UserChoice.ShowDialog();
+            } else
+            {
+                UserChoice UserChoice = new UserChoice("Введите id оборудования");
+                UserChoice.ShowDialog();
+            }
             if (UserChoiceClass.Value != null)
             {
                 DataTable dt;
-                string select = "select R.idОборудования, ТипРаботы, Причина, Описание, Д.ДатаДвижения from reports_works as R inner join equipment_movements as Д on R.idОборудования = Д.idОборудования where idОборудования = '" + UserChoiceClass.Value + "'";
+                string select = "select R.idОборудования, ТипРаботы, Причина, Описание, Д.ДатаДвижения from reports_works as R inner join equipment_movements as Д on R.idОборудования = Д.idОборудования where  ТипДокумента = 'Отчет о ремонте' and R.idОборудования = '" + UserChoiceClass.Value + "'";
                 dt = SelectDB(select);
                 dataGridView1.DataSource = null; //reset
                 dataGridView1.DataSource = dt;
             }
+            UserChoiceClass.Value = null;
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e) //ввод в эксп
         {
@@ -355,7 +382,7 @@ namespace Equipment_maintenance
                 string idОборудования = dataGridView1[0, dataGridView1.SelectedRows[0].Index].Value.ToString();
 
                 DataTable dt;
-                string select = "select * from equipment_movements where idОборудования = '" + idОборудования + "'";
+                string select = "select idОборудования, НовыйВладелец, 'Корпус ' || A.Корпус || ', этаж ' ||  A.Этаж::text || ', комната ' || A.Комната::text as Адрес, ТипДокумента, ДатаДвижения from equipment_movements as Д inner join equipment_addresses as A on Д.НовыйАдрес = A.idАдреса where idОборудования = '" + idОборудования + "'";
                 dt = SelectDB(select);
                 dataGridView1.DataSource = null; //reset
                 dataGridView1.DataSource = dt;
@@ -369,11 +396,21 @@ namespace Equipment_maintenance
         {
             if (dataGridView1.SelectedRows.Count != 0)
             {
-                string idАдреса = dataGridView1[5, dataGridView1.SelectedRows[0].Index].Value.ToString();
+                string idАдреса = "1";
+                //string idАдреса = dataGridView1[5, dataGridView1.SelectedRows[0].Index].Value.ToString();
                 string idОборудования = dataGridView1[0, dataGridView1.SelectedRows[0].Index].Value.ToString();
+                
+                foreach (DataRow row in dt_for_address_id_equipment.Rows)
+                {
+                    if (idОборудования == row[0].ToString())
+                    {
+                        idАдреса = row[1].ToString();
+                        break;
+                    }
+                }
 
                 DataTable dt;
-                string select = "select O.idОборудования, O.Наименование, O.МатОтвЛицо, Ad.Отдел, Ad.Корпус, Ad.Этаж, Ad.Комната, Ad.Стол from equipment as O inner join equipment_addresses as Ad on Ad.idАдреса = O.idАдреса and O.idОборудования ='"+ idОборудования + "' where O.idАдреса = '" + idАдреса + "'";
+                string select = "select O.idОборудования, O.Наименование, O.Пользователь, Ad.Отдел, Ad.Корпус, Ad.Этаж, Ad.Комната, Ad.Стол from equipment as O inner join equipment_addresses as Ad on Ad.idАдреса = O.idАдреса and O.idОборудования ='"+ idОборудования + "' where O.idАдреса = '" + idАдреса + "'";
                 dt = SelectDB(select);
                 dataGridView1.DataSource = null; //reset
                 dataGridView1.DataSource = dt;

@@ -19,6 +19,13 @@ namespace Equipment_maintenance
             
         }
 
+        public UserChoice(string text,string into)
+        {
+            InitializeComponent();
+            label1.Text = text; //присваиваем текст из предыдущей формы
+            textBox1.Text = into;
+        }
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter && textBox1.Text != null ) //если энтер и не пусто то выходим
