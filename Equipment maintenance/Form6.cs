@@ -8,6 +8,7 @@ namespace Equipment_maintenance
 {
     public partial class Form6 : Form //акт технической экспертизы (вывода)
     {
+        public static string idEquipment { get; set; }
         private Label label1;
         private Label label2;
         private Label label3;
@@ -30,7 +31,7 @@ namespace Equipment_maintenance
             conn.Open(); //Открываем соединение
             //textBox3.Text = DateTime.Now.ToString();
             textBox1.Text = idDoc();
-            
+            textBox3.Text = idEquipment;
         }
 
         private void InitializeComponent()

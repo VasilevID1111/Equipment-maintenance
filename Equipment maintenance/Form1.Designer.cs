@@ -60,6 +60,7 @@ namespace Equipment_maintenance
             this.историяПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.датаВведенияВЭксплуатациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.работыПоОборудованиюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -69,19 +70,22 @@ namespace Equipment_maintenance
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.menuStrip2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 50);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 55);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1096, 449);
+            this.dataGridView1.Size = new System.Drawing.Size(1096, 444);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -131,7 +135,7 @@ namespace Equipment_maintenance
             // 
             this.pictureBox3.AccessibleDescription = "Местоположение";
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(461, 12);
+            this.pictureBox3.Location = new System.Drawing.Point(567, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(32, 32);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -141,14 +145,13 @@ namespace Equipment_maintenance
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.создатьДокументToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(496, 18);
+            this.menuStrip1.Location = new System.Drawing.Point(602, 19);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(127, 24);
             this.menuStrip1.TabIndex = 7;
@@ -167,6 +170,7 @@ namespace Equipment_maintenance
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(117, 20);
             this.toolStripMenuItem1.Text = "Создать документ";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // актВводавэксплуатацию
             // 
@@ -281,6 +285,7 @@ namespace Equipment_maintenance
             // pictureBox5
             // 
             this.pictureBox5.AccessibleDescription = "Местоположение";
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(1052, 12);
@@ -296,7 +301,7 @@ namespace Equipment_maintenance
             // 
             this.pictureBox6.AccessibleDescription = "Местоположение";
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(626, 12);
+            this.pictureBox6.Location = new System.Drawing.Point(461, 11);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(32, 32);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -310,7 +315,7 @@ namespace Equipment_maintenance
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.запросыToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(661, 19);
+            this.menuStrip2.Location = new System.Drawing.Point(496, 18);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(68, 24);
             this.menuStrip2.TabIndex = 11;
@@ -357,23 +362,32 @@ namespace Equipment_maintenance
             this.работыПоОборудованиюToolStripMenuItem.Text = "Работы по оборудованию";
             this.работыПоОборудованиюToolStripMenuItem.Click += new System.EventHandler(this.работыПоОборудованиюToolStripMenuItem_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox6);
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.menuStrip1);
+            this.panel1.Controls.Add(this.menuStrip2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1096, 55);
+            this.panel1.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1096, 499);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.menuStrip2);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -392,6 +406,8 @@ namespace Equipment_maintenance
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,6 +446,7 @@ namespace Equipment_maintenance
         private System.Windows.Forms.ToolStripMenuItem историяПользователяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem датаВведенияВЭксплуатациюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem работыПоОборудованиюToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

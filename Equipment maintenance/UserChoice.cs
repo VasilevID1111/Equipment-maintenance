@@ -26,6 +26,11 @@ namespace Equipment_maintenance
                 UserChoiceClass.Value = textBox1.Text; //не забываем запомнить переменную
                 this.Close();
             }
+
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
             
         }
     }

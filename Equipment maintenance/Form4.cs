@@ -8,6 +8,9 @@ namespace Equipment_maintenance
 {
     public partial class Form4 : Form //акт приема передачи
     {
+        public static string idEquipment { get; set; }
+        public static string dopEquipment { get; set; }
+
         private Label label1;
         private Label label2;
         private Label label3;
@@ -37,6 +40,8 @@ namespace Equipment_maintenance
             //textBox3.Text = DateTime.Now.ToString();
             textBox1.Text = idDoc();
             textBox7.Text = idComp();
+            textBox3.Text = idEquipment;
+            textBox8.Text = dopEquipment;
         }
 
         private void InitializeComponent()

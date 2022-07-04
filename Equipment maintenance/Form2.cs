@@ -6,8 +6,14 @@ using Npgsql;
 
 namespace Equipment_maintenance
 {
+    
     public partial class Form2 : Form
     {
+        public static string note { get; set; }
+        public static string idEquipment { get; set; }
+        public static string name { get; set; }
+        public static string type { get; set; }
+        public static string price { get; set; }
         private Label label1;
         private Label label2;
         private Label label3;
@@ -30,13 +36,20 @@ namespace Equipment_maintenance
         public NpgsqlConnection conn = new NpgsqlConnection(Connection.ConnParam_Admin());
         //public NpgsqlConnection conn = new NpgsqlConnection("Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"); //на сервере
         //public string conn_param = "Server=62.113.111.2;Port=5432;User Id=postgres;Password=g5jT*CwX;Database=devices;"; //строка подключения к БД
+
+        
         public Form2()
         {
             InitializeComponent();
             conn.Open(); //Открываем соединение
             textBox1.Text = idDoc();
+            textBox4.Text = note;
+            textBox5.Text = idEquipment;
+            textBox6.Text = name;
+            textBox7.Text = type;
+            textBox8.Text = price;
             //textBox4.Text = DateTime.Now.ToString();
-            
+
         }
         
         private void InitializeComponent()
