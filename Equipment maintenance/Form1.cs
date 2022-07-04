@@ -73,7 +73,7 @@ namespace Equipment_maintenance
             conn.Open(); //Открываем соединение
             try
             {
-                NpgsqlCommand com = new NpgsqlCommand(@"select * from equipment", conn); //запрос - select
+                NpgsqlCommand com = new NpgsqlCommand(@"select idОборудования, ТипОборудования, Наименование, Пользователь, A.Корпус, A.Этаж, A.Комната, A.Стол, A.Отдел, Прочее, idКомпановки, Стоимость, ДопОборудование from equipment as O inner join equipment_addresses as A on O.idАдреса = A.idАдреса", conn); //запрос - select
                 DataTable dt = new DataTable(); 
                 dt.Load(com.ExecuteReader()); //загружаем в dt вывод запроса
                 
