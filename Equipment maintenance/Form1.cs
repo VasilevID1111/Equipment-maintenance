@@ -84,7 +84,7 @@ namespace Equipment_maintenance
                     proverka = dt.Rows[i][1].ToString();
                     if (proverka == "1")
                     {
-                        dt.Rows[i][1] = "Рабочее";
+                        dt.Rows[i][1] = "В эксплуатации";
                     }
                     else if (proverka == "2")
                     {
